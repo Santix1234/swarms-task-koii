@@ -7,30 +7,41 @@
 ### Test Infrastructure
 - **Test Runner**: Jest with TypeScript support
 - **Test Coverage**: Comprehensive test suites for all components
-- **Configuration**: Centralized configuration in `jest.config.js`
+- **Configuration**: Detailed configuration in `tests/TEST_CONFIGURATION.md`
 
 ### Test Types
-1. **Unit Tests**: Verify individual component functionality
-2. **Integration Tests**: Test component interactions
-3. **Mock Tests**: Simulate complex scenarios
+1. **Unit Tests**: Individual component verification
+2. **Integration Tests**: Component interaction testing
+3. **Mock Tests**: Complex scenario simulation
 
 ### Running Tests
 ```bash
 # Run all tests
 npm test
 
-# Run tests for a specific component
+# Run tests for specific components
 npm test --prefix node
 npm test --prefix coordinator
+
+# Generate coverage report
+npm run test:coverage
 ```
 
-### Best Practices
-- Write descriptive test cases
-- Maintain high test coverage
-- Use mock dependencies
-- Test edge cases
-- Keep tests independent
+### Test Configuration Highlights
+- Centralized Jest configuration
+- Comprehensive mocking strategies
+- High code coverage targets
+- Performance-optimized test execution
 
-For detailed test configuration, see `tests/README.md`.
+### Best Practices
+- Write descriptive, focused test cases
+- Maintain 80%+ test coverage
+- Use dependency mocking
+- Test both happy and edge cases
+- Ensure test independence
+
+### Key Documentation
+- [Detailed Test Configuration Guide](/tests/TEST_CONFIGURATION.md)
+- Component-specific README files
 
 ... [rest of the previous content] ...
