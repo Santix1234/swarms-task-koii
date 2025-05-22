@@ -1,0 +1,67 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "Test Configuration Schema",
+    "description": "A standardized schema for test configurations across multiple languages",
+    "required": ["name", "type", "target"],
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "Unique name of the test configuration",
+            "minLength": 1,
+            "maxLength": 100
+        },
+        "type": {
+            "type": "string",
+            "description": "Type of test (unit, integration, e2e)",
+            "enum": ["unit", "integration", "e2e"]
+        },
+        "target": {
+            "type": "object",
+            "description": "Target system or component for testing",
+            "properties": {
+                "language": {
+                    "type": "string",
+                    "enum": ["typescript", "python", "javascript", "shell"]
+                },
+                "component": {
+                    "type": "string",
+                    "description": "Specific component being tested"
+                }
+            },
+            "required": ["language", "component"]
+        },
+        "dependencies": {
+            "type": "array",
+            "description": "List of test dependencies",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {"type": "string"},
+                    "version": {"type": "string"}
+                },
+                "required": ["name"]
+            }
+        },
+        "environment": {
+            "type": "object",
+            "description": "Environment variables for the test",
+            "additionalProperties": {
+                "type": ["string", "number", "boolean"]
+            }
+        },
+        "testCases": {
+            "type": "array",
+            "description": "List of test cases to run",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {"type": "string"},
+                    "description": {"type": "string"},
+                    "expectedResult": {"type": ["string", "number", "boolean", "null"]}
+                },
+                "required": ["name"]
+            }
+        }
+    }
+}
