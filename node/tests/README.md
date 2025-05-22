@@ -1,73 +1,61 @@
-# Summarizer Task Tests
+# Node Tests Documentation
 
-This directory contains end-to-end tests for the summarizer task using the Prometheus test framework.
+## Overview
+This directory contains comprehensive test suites for the Node component of the Swarm Task System.
 
-## Structure
+## Test Configuration
+- **Framework**: Jest with TypeScript support
+- **Coverage Tool**: Istanbul (via Jest)
+- **Mocking**: Custom mock configurations
 
-```
-tests/
-├── config.yaml           # Test configuration
-├── workers.json         # Worker configuration
-├── data/               # Test data
-│   ├── todos.json     # Sample todo items
-│   └── issues.json    # Sample issues
-├── stages/            # Test stages implementation
-├── e2e.py            # Test runner script
-└── steps.py          # Test steps definition
-```
-
-## Prerequisites
-
-1. Install the test framework:
-
-```bash
-pip install -e test-framework/
-```
-
-2. Set up environment variables in `.env`:
-
-```
-ANTHROPIC_API_KEY=your_test_key
-GITHUB_USERNAME=your_test_username
-GITHUB_TOKEN=your_test_token
-```
+## Test Types
+1. **Unit Tests**: Located in respective module directories
+2. **Integration Tests**: Verify component interactions
+3. **Mock Tests**: Simulate complex scenarios
 
 ## Running Tests
+### Prerequisites
+- Node.js 18.x or later
+- All project dependencies installed
 
-To run the tests:
-
+### Commands
 ```bash
-python -m tests.e2e
+# Run all tests
+npm test
+
+# Run specific test suite
+npm test -- path/to/test/file.test.ts
+
+# Generate coverage report
+npm run test:coverage
 ```
 
-To force reset databases before running:
+## Best Practices
+- Write isolated, focused tests
+- Use meaningful test descriptions
+- Cover edge cases and error scenarios
+- Maintain high test coverage
+- Keep tests fast and deterministic
 
-```bash
-python -m tests.e2e --reset
-```
+## Troubleshooting
+- Ensure correct TypeScript configuration
+- Check dependency versions
+- Verify environment variables
+- Use verbose mode for detailed output
 
-## Test Flow
+## Configuration Files
+- `jest.config.js`: Jest configuration
+- `tsconfig.json`: TypeScript compiler settings
+- `.env.test`: Test-specific environment variables
 
-1. API Key Validation
+## Mock Strategy
+Utilize comprehensive mocking for:
+- External services
+- Database interactions
+- Complex dependencies
 
-   - Validates Anthropic API key
-
-2. GitHub Validation
-
-   - Validates GitHub credentials
-
-3. Todo Management
-
-   - Fetches todos for each worker
-   - Generates summaries
-   - Submits results
-
-4. Audit Process
-   - Workers audit each other's submissions
-
-## Adding New Tests
-
-1. Create a new stage in `stages/`
-2. Add stage to `stages/__init__.py`
-3. Add test step in `steps.py`
-4. Update test data in `data/` if needed
+## Contributing
+1. Write clear, descriptive tests
+2. Follow existing test structure
+3. Add tests for new features
+4. Update documentation
